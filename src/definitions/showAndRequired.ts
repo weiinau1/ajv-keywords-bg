@@ -17,18 +17,22 @@ export default function getDef(): FuncKeywordDefinition {
                     if (!fieldShowed||!fieldValidation)
                         continue
 
-                    function checkRequired():boolean {
-                        return fieldShowed && (fieldValidation.includes("accepted") || fieldValidation.includes("required"));
-                    }
-                    function checkRequiredIf():boolean {
-                        return (fieldValidation.includes("required_if") || fieldValidation.includes("accepted_if")) && !fieldValidation.includes(fieldShowed);
+                    function checkRequiredIfFailed() {
+                        if((fieldValidation.includes("required_if") || fieldValidation.includes("accepted_if"))){
+                            return fieldShowed && !fieldValidation.includes(fieldShowed);
+                        }else if(fieldValidation.includes("required_without") || fieldValidation.includes("accepted_without"))
+                        {
+                            return false
+                        } else if(fieldValidation.includes("required") || fieldValidation.includes("accepted")){
+                            return fieldShowed
+                        }
                     }
 
-                    if (!checkRequiredIf() && !checkRequired()) {
-                        return true
+                    if (checkRequiredIfFailed()) {
+                        return false
                     }
                 }
-                return false
+                return true
             }
         },
         metaSchema: {
@@ -37,7 +41,5 @@ export default function getDef(): FuncKeywordDefinition {
         },
     }
 }
-
-
 
 module.exports = getDef
