@@ -22,10 +22,10 @@ export default function getDef(): FuncKeywordDefinition {
                     return (fieldValidation.includes("required_if") || fieldValidation.includes("accepted_if")) && !fieldValidation.includes(fieldShowed);
                 }
 
-                if (checkRequiredIf() || checkRequired()) {
-                    return false;
+                if (!checkRequiredIf() && !checkRequired()) {
+                    return true;
                 }
-                return true
+                return false
             }
         },
         metaSchema: {
