@@ -16,10 +16,10 @@ export default function getDef(): FuncKeywordDefinition {
                     let fieldValidation = field["validation"];
                     if (!fieldShowed||!fieldValidation)
                         continue;
-                    if (fieldShowed && fieldValidation.includes("accepted")){
+                    if (fieldShowed && (fieldValidation.includes("accepted")||fieldValidation.includes("required"))){
                         return false;
                     }
-                    if (fieldValidation.includes("required_if") && !fieldValidation.includes(fieldShowed)) {
+                    if ((fieldValidation.includes("required_if")||fieldValidation.includes("accepted_if") ) && !fieldValidation.includes(fieldShowed)) {
                         return false;
                     }
                 }
