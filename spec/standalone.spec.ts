@@ -13,7 +13,7 @@ jsonSchemaTest(ajvKeywordsPlugin(ajvPack(options)), {
     tests: "./tests/{**/,}*.json",
   },
   only: [
-    // "uniqueItemProperties",
+    //"uniqueItemProperties",
     "allRequired",
     "anyRequired",
     "oneRequired",

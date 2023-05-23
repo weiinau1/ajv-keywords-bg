@@ -1,0 +1,34 @@
+[
+  {
+    "description": "test required if and show if",
+    "schema": {
+      "showAndRequiredElement": [
+        "show_if"
+      ]
+    },
+    "tests": [
+      {
+        "description": "matched",
+        "data":
+          {
+            "id": 1,
+            "name": "haha",
+            "validation": "required_if:field8,2",
+            "show_if": "field8,2"
+          },
+        "valid": true
+      },
+      {
+        "description": "NOT matched",
+        "data":
+          {
+            "id": 2,
+            "name": "haha",
+            "validation": "required_if:field8,2",
+            "show_if": "field8,4"
+          },
+        "valid": false
+      }
+    ]
+  }
+]
