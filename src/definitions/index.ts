@@ -16,6 +16,8 @@ import deepProperties from "./deepProperties"
 import deepRequired from "./deepRequired"
 import dynamicDefaults from "./dynamicDefaults"
 import selectDef, {SelectError} from "./select"
+import showAndRequired from "./showAndRequired"
+import showAndRequiredElement from "./showAndRequiredElement"
 
 const definitions: GetDefinition<KeywordDefinition>[] = [
   typeofDef,
@@ -25,6 +27,8 @@ const definitions: GetDefinition<KeywordDefinition>[] = [
   regexp,
   transform,
   uniqueItemProperties,
+  showAndRequired,
+  showAndRequiredElement,
   allRequired,
   anyRequired,
   oneRequired,
